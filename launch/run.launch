@@ -1,0 +1,11 @@
+<launch>
+
+    <arg name="project" default="dynamic"/>
+    
+    <node pkg="$(arg project)" type="$(arg project)_preProcessing"      name="$(arg project)_preProcessing"       output="screen"    respawn="true"/>
+    <node pkg="$(arg project)" type="$(arg project)_dynamicFeature"      name="$(arg project)_dynamicFeature" output="screen" respawn="true"/>
+    
+   <!-- Rviz -->
+   <node pkg="rviz" type="rviz" name="$(arg project)_rviz" args="-d $(find dynamic)/launch/config/rviz.rviz" /> 
+
+</launch>
